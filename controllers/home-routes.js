@@ -52,7 +52,7 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', (req, res) => {
     if (!req.session.loggedIn) {
         res.redirect('/login')
-    }
+    } else {
 
     Post.findAll({
         where: {
@@ -85,7 +85,7 @@ router.get('/dashboard', (req, res) => {
             loggedIn: req.session.loggedIn
            });
         })
-});
+}});
 
 
 router.get('/post/:id', (req, res) => {

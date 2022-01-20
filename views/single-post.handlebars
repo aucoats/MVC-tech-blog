@@ -6,7 +6,7 @@
           <p>{{post.content}}</p>
       </div>
       <div class="meta">
-        {{post.created_at}}
+        {{format_date post.created_at}}
         {{post.user_id}}
         |
         <a href="/post/{{id}}">{{post.comments.length}} comments</a>
