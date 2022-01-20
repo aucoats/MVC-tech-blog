@@ -1,1 +1,17 @@
-<p>Loaded successfully</p>
+<ol class="post-list">
+   {{#each posts as |post|}}
+  <li>
+    <article class="post">
+      <div class="title">
+        <h1>{{title}}</h1>
+        <span>{{content}}</span>
+      </div>
+      <div class="meta">
+        {{created_at}}
+        |
+        <a href="/post/{{id}}">{{comments.length}} comments</a>
+      </div>    
+    </article>
+  </li>
+  {{/each}}
+</ol>
