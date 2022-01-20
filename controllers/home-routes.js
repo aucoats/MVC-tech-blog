@@ -54,8 +54,39 @@ router.get('/dashboard', (req, res) => {
         res.redirect('/login')
     }
 
-    res.render('dashboard');
+    Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        attributes: [
+            'title',
+            'content',
+            'created_at',
+        ],
+        include: [
+            {
+                model: User,
+                attributes: [ 'username' ]
+            }
+        ]
+    }).
+    then(dbPostData => {
+        if (!dbPostData) {
+            res.render('dashboard');
+          }
+        
+        // console.log(res.json(dbPostData));
+          // serialize the data
+          const post = dbPostData.map(post => post.get({ plain: true }));
+    
+          // pass data to template
+          res.render('dashboard', { 
+            post,
+            loggedIn: req.session.loggedIn
+           });
+        })
 });
+
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
@@ -65,17 +96,18 @@ router.get('/post/:id', (req, res) => {
       attributes: [
         'id',
         'title',
+        'content',
         'created_at',
       ],
       include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
+    //     {
+    //       model: Comment,
+    //       attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+    //       include: {
+    //         model: User,
+    //         attributes: ['username']
+    //       }
+    //     },
         {
           model: User,
           attributes: ['username']

@@ -14,17 +14,26 @@
   </form>
 </section>
 
-{{#if posts.length}}
+{{#if post.length}}
 <section>
   <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
+  <ol class="post-list">
+   {{#each post as |post|}}
+    <article class="post">
+      <div class="title">
+        <a href="/post/{{id}}">{{title}}</h1>
+      </div>
+      <div class="content">
+          {{content}}
+      </div> 
+      <div class="meta">
+        {{created_at}}
+        |
+        <a href="/post/{{id}}">{{comments.length}} comments</a>
+      </div>    
+    </article>
+  {{/each}}
+</ol>
 </section>
 {{/if}}
 
