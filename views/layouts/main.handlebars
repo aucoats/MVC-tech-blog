@@ -10,18 +10,18 @@
 
 <body>
      <header>
-    <h1>
-      <a href="/">Just Tech News</a>
-    </h1>
     <nav>
-      <a href="/">Homepage</a>
+      <a href="/">Home</a>
       <a href="/dashboard">Dashboard</a>
       {{#if loggedIn}}
-      <button id ="logout" class="btn-no-style">logout</button>
+      <button id="logout">logout</button>
       {{else}}
       <a href="/login">Login</a>
       {{/if}}
     </nav>
+    <h1>
+      <a href="/">Tech Blog</a>
+    </h1>
   </header>
     <main>
       {{{ body }}}
