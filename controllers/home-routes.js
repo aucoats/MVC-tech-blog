@@ -59,6 +59,7 @@ router.get('/dashboard', (req, res) => {
             user_id: req.session.user_id
         },
         attributes: [
+            'id',
             'title',
             'content',
             'created_at',
@@ -126,7 +127,8 @@ router.get('/post/:id', (req, res) => {
         // pass data to template
         res.render('single-post', { 
           post,
-          loggedIn: req.session.loggedIn
+          loggedIn: req.session.loggedIn,
+          user_id: req.session.user_id
          });
       })
       .catch(err => {
