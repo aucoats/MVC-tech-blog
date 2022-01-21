@@ -7,15 +7,13 @@
    {{#each post as |post|}}
     <article class="post">
       <div class="title">
-        <a href="/post/{{id}}">{{title}}</h1>
+        <a href="/post/{{id}}"><h1>{{title}}</h1></a>
       </div>
       <div class="content">
           {{content}}
       </div> 
       <div class="meta">
         {{format_date created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} comments</a>
       </div>    
     </article>
   {{/each}}

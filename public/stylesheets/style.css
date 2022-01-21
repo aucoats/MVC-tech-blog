@@ -26,6 +26,13 @@ footer {
     text-align: center;
 }
 
+span {
+    font-style: italic;
+}
+
+ul {
+    list-style: none;
+}
 
 header {
     padding: auto;
